@@ -20,7 +20,7 @@ python reprokit.py verify --before /path/to/buggy --after /path/to/fixed --test 
 
 Execute only code the user trusts. The CLI runs locally with the current user's
 permissions; it is not a sandbox. For arbitrary third-party code, stop and explain
-that an isolated execution environment is outside this MVP's scope.
+that an isolated execution environment is outside the local verifier.
 
 If the fixed version is absent, explain that paired verification needs one. You
 may draft a candidate fix in a separate directory when the user requests it.
@@ -30,3 +30,4 @@ Read `result.json` and the logs. Link the report and the generated test. Describ
 `not_reproduced`, `environment_error`, `inconclusive`, `timeout`, and `still_failing`
 honestly. Even `verified_regression` still needs human review of the assertion's
 meaning. Never claim the test is a security audit or proves the whole project.
+
