@@ -1,0 +1,18 @@
+{
+  "name": "reprokit",
+  "version": "0.1.0",
+  "description": "Verify Python regression tests before and after a fix.",
+  "author": {
+    "name": "vcet7333-sketch"
+  },
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "ReproKit",
+    "shortDescription": "Verify a bug reproduction and its fix.",
+    "longDescription": "Generate a pytest regression test with Codex, compare trusted local before/after code, and save execution evidence.",
+    "developerName": "vcet7333-sketch",
+    "category": "Productivity",
+    "capabilities": [],
+    "defaultPrompt": "Use ReproKit to reproduce this Python bug and verify the fix."
+  }
+}
