@@ -1,10 +1,18 @@
 # ReproKit
 
-A tiny Codex skill and Python CLI for checking regression tests. **Same test,
-buggy code fails, fixed code passes, evidence saved.**
+**Turn bug reports into regression evidence. Ship fixes with confidence.**
 
-This is a working MVP for local code you trust. Codex writes the test through the
-included skill; the CLI executes and checks it. No API key is required by the CLI.
+ReproKit brings Codex-assisted test creation and executable before/after verification into one focused workflow for Python maintainers. Capture the failure, check the fix, and walk away with a report you can inspect and rerun.
+
+## From bug report to evidence
+
+- **Write the regression with Codex.** Turn expected behavior into a focused pytest test.
+- **Verify both sides of the fix.** Run the same test against buggy and corrected code.
+- **Make the result reviewable.** Export Markdown, structured JSON, execution logs, and the test itself.
+- **Know what happened.** Distinguish reproduced regressions from setup errors, skipped tests, and timeouts.
+- **Keep the workflow yours.** Local execution, MIT license, and no API key required by the verifier.
+
+**One test. Two code revisions. Evidence you can inspect.**
 
 ## Try it
 
@@ -19,8 +27,7 @@ python reprokit.py verify --before examples/before --after examples/after --test
 
 Expected: `verified_regression`. Open `evidence/demo/report.md`.
 The bundled example checks that a 20% discount on 200 is 160. The buggy function
-subtracts 20 directly and returns 180. This is a synthetic example, not an upstream
-bug or an adoption claim. Choose a fresh `--out` folder for each run.
+subtracts 20 directly and returns 180. This self-contained example demonstrates the full verification workflow. Choose a fresh `--out` folder for each run.
 
 ## Use with Codex
 
@@ -59,14 +66,13 @@ Evidence contains Markdown, JSON, both pytest logs, a copy of the test, and its 
 Check that the failing assertion actually represents the issue; matching execution
 results alone cannot establish the test's semantic correctness.
 
-## Limits
+## Execution model
 
 **Not a sandbox.** Tests execute with your current user's permissions and environment.
 Only run trusted code. A temporary copy protects against ordinary accidental edits,
 not malicious code. Timeout bounds the direct pytest process, not a malicious process
 tree. Review logs before sharing; application output can contain private information.
-This MVP has no hosted service, automatic issue fetching, Docker runner, automatic
-fixing, billing, API spending controls, or external users claimed.
+Codex generates the test in your active session; the CLI handles local verification and reporting.
 
 ## Development
 
@@ -74,6 +80,7 @@ fixing, billing, API spending controls, or external users claimed.
 python -m unittest discover -s tests -v
 ```
 
-Small bug fixes and clear reproductions are welcome. Open an issue with the command,
+Help build a better bug-to-regression workflow. Contributions and clear reproductions are welcome. Open an issue with the command,
 Python version, expected result, and redacted logs. MIT licensed. Independent project;
 not affiliated with or endorsed by OpenAI.
+
